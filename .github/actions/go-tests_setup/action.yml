@@ -1,0 +1,6 @@
+runs:
+  using: "composite"
+  steps:
+    - name: Disable long tests
+      shell: bash
+      run: echo "GOFLAGS=\"$GOFLAGS\" -short" >> $GITHUB_ENV
