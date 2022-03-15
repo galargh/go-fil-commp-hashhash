@@ -1,0 +1,9 @@
+name: Go Test Setup
+description: Perform custom setup for go test
+
+runs:
+  using: "composite"
+  steps:
+    - name: Increase go test timeout to 1h
+      shell: bash
+      run: echo "GOFLAGS=$GOFLAGS -timeout=3600s" >> $GITHUB_ENV
