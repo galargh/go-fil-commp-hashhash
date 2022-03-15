@@ -7,6 +7,10 @@ runs:
     - name: Increase go test timeout to 1h
       shell: bash
       run: echo "GOFLAGS=$GOFLAGS -timeout=3600s" >> $GITHUB_ENV
+    - name: Parallelise go test on linux
+      if: runner.os == 'Linux'
+      shell: bash
+      run: echo "GOFLAGS=$GOFLAGS -parallel=64" >> $GITHUB_ENV
     - name: Disable long tests on non-linux runners
       if: runner.os != 'Linux'
       shell: bash
